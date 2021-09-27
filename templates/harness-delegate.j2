@@ -37,24 +37,24 @@ kind: StatefulSet
 metadata:
   labels:
     harness.io/app: harness-delegate
-    harness.io/account: xkmqdw
+    harness.io/account: {{ HARNESS_ACCOUNT }}
     harness.io/name: {{ HARNESS_DELEGATE_NAME }}
-  # Name must contain the six letter account identifier: xkmqdw
-  name: {{ HARNESS_DELEGATE_NAME }}-xkmqdw
+  # Name must contain the six letter account identifier: {{ HARNESS_ACCOUNT }}
+  name: {{ HARNESS_DELEGATE_NAME }}-{{ HARNESS_ACCOUNT }}
   namespace: harness-delegate
 spec:
   replicas: 1
   selector:
     matchLabels:
       harness.io/app: harness-delegate
-      harness.io/account: xkmqdw
+      harness.io/account: {{ HARNESS_ACCOUNT }}
       harness.io/name: {{ HARNESS_DELEGATE_NAME }}
   serviceName: ""
   template:
     metadata:
       labels:
         harness.io/app: harness-delegate
-        harness.io/account: xkmqdw
+        harness.io/account: {{ HARNESS_ACCOUNT }}
         harness.io/name: {{ HARNESS_DELEGATE_NAME }}
     spec:
       imagePullSecrets:
