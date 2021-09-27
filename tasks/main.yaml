@@ -13,7 +13,7 @@
     - "{{ HARNESS_ACCOUNT_SECRET }}"
     - "{{ HARNESS_DELEGATE_NAME }}"
     - "{{ HARNESS_DELEGATE_PROFILE }}"
-    - "{{ HARNESS_ACCOUNT }}""
+    - "{{ HARNESS_ACCOUNT }}"
   no_log: True
 
 ## HARNESS
