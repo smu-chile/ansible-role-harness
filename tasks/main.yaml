@@ -1,0 +1,31 @@
+- name: "Verify that required string variables are defined"
+  assert:
+    that: 
+      - required_variable is defined
+      - required_variable | length > 0
+      - required_variable != None
+    fail_msg: "{{ required_variable }} needs to be set for the role to work"
+    success_msg: "Required variable {{ required_variable}} is defined"
+  loop_control:
+    loop_var: required_variable
+  with_items:
+    - "{{ HARNESS_ACCOUNT_ID }}"
+    - "{{ HARNESS_ACCOUNT_SECRET }}"
+    - "{{ HARNESS_DELEGATE_NAME }}"
+    - "{{ HARNESS_DELEGATE_PROFILE }}"
+  no_log: True
+
+## HARNESS
+
+- name: Creating harness-delegate.yaml
+  template:
+    src: harness-delegate.j2
+    dest: harness-delegate.yaml
+
+- name: Setup Harness
+  shell: kubectl apply -f harness-delegate.yaml
+
+- name: Deleting harness-delegate.yaml
+  file:
+    path: harness-delegate.yaml
+    state: absent
