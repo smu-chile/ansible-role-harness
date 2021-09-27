@@ -14,6 +14,7 @@ Role Variables
     - "{{ HARNESS_ACCOUNT_ID }}"
     - "{{ HARNESS_ACCOUNT_SECRET }}"
     - "{{ HARNESS_DELEGATE_NAME }}"
+    - "{{ HARNESS_DELEGATE_PROFILE }}"
 ```
 
 Example Playbook
@@ -30,6 +31,7 @@ Example Playbook
       HARNESS_ACCOUNT_ID: "{{ lookup('env', 'HARNESS_ACCOUNT_ID') }}"
       HARNESS_ACCOUNT_SECRET: "{{ lookup('env', 'HARNESS_ACCOUNT_SECRET') }}"
       HARNESS_DELEGATE_NAME: "{{ lookup('env', 'CLUSTER_NAME')}}"
+      HARNESS_DELEGATE_PROFILE: "{{ lookup('env',  HARNESS_DELEGATE_PROFILE ) }}"
 ```
 
 License
