@@ -14,7 +14,7 @@
     - "{{ HARNESS_DELEGATE_NAME }}"
     - "{{ HARNESS_DELEGATE_PROFILE }}"
     - "{{ HARNESS_ACCOUNT }}"
-  no_log: True
+  # no_log: True
 
 ## HARNESS
 
