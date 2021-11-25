@@ -28,7 +28,6 @@ Example Playbook
   become: no
   remote_user: "root"
 
-# Uncomment "aws-eks-setup" role only if you are upgrading the cluster
     - role: ansible-role-harness
       HARNESS_ACCOUNT_ID: "{{ lookup('env', 'HARNESS_ACCOUNT_ID') }}"
       HARNESS_ACCOUNT_SECRET: "{{ lookup('env', 'HARNESS_ACCOUNT_SECRET') }}"
