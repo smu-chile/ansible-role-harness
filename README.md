@@ -1,9 +1,9 @@
 Ansible Role Harness
 =========
 
-Role to setup new relic integration
+Role to setup harness integration
 
-See more: [Kubernetes integration: install and configure](https://docs.newrelic.com/docs/integrations/kubernetes-integration/installation/kubernetes-integration-install-configure/)
+See more: [Harness Documentation](https://ngdocs.harness.io/)
 
 
 
@@ -37,10 +37,6 @@ Example Playbook
       HARNESS_ACCOUNT: "{{ lookup('env', 'HARNESS_ACCOUNT') }}"
 ```
 
-License
--------
-
-BSD
 
 Author Information
 ------------------
