@@ -14,6 +14,7 @@
     - "{{ HARNESS_DELEGATE_NAME }}"
     - "{{ HARNESS_DELEGATE_PROFILE }}"
     - "{{ HARNESS_ACCOUNT }}"
+    - "{{ AKAMAI_CREDENTIALS }}"
   no_log: True
 
 ## HARNESS
