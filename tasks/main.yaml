@@ -24,6 +24,18 @@
     src: harness-delegate.j2
     dest: harness-delegate.yaml
 
+
+- name: Display harness-delegate.yaml contents
+  command: cat harness-delegate.yaml
+  register: command_output
+
+- name: Print to console
+  debug:
+    msg: "{{command_output.stdout}}"
+
+- name: Setup Harness
+  shell: kubectl apply -f harness-delegate.yaml
+
 - name: Setup Harness
   shell: kubectl apply -f harness-delegate.yaml
 
