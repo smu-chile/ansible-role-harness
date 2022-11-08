@@ -180,7 +180,7 @@ spec:
             chmod +x akamai-purge-1.0.1-linux386
             mv akamai-purge-1.0.1-linux386 /usr/local/bin/akamai-purge
             cat <<EOT >> /root/.edgerc
-{{ AKAMAI_CREDENTIALS | indent(8, true) }}
+{{ AKAMAI_CREDENTIALS | indent(12, true) }}
             EOT
       restartPolicy: Always
 
