@@ -31,7 +31,6 @@ data:
   PROXY_USER: ""
   PROXY_PASSWORD: ""
 ---
-
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -67,6 +66,9 @@ spec:
           limits:
             cpu: "1"
             memory: "8Gi"
+          request:
+            cpu: "1"
+            memory: "2Gi"
         readinessProbe:
           exec:
             command:
@@ -172,7 +174,9 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         - name: INIT_SCRIPT
-          value: |-
+          value: 
+{% if AKAMAI_CREDENTIALS is defined %}
+            |-
             echo install wget
             apt-get install wget
             echo wget installed
@@ -182,5 +186,8 @@ spec:
             cat <<EOT >> /root/.edgerc
 {{ AKAMAI_CREDENTIALS | indent(12, true) }}
             EOT
+{% else %}
+            ""
+{% endif %}
       restartPolicy: Always
 
