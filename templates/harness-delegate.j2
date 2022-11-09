@@ -175,7 +175,7 @@ spec:
               fieldPath: metadata.namespace
         - name: INIT_SCRIPT
           value: 
-{% if AKAMAI_CREDENTIALS is defined %}
+{% if AKAMAI_CREDENTIALS  %}
             |-
             echo install wget
             apt-get install wget
