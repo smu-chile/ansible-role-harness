@@ -26,8 +26,6 @@
 - name: Setup Harness
   shell: kubectl apply -f harness-delegate.yaml
 
-- name: Setup Harness
-  shell: kubectl apply -f harness-delegate.yaml
 
 - name: Deleting harness-delegate.yaml
   file:
