@@ -31,7 +31,6 @@ data:
   PROXY_USER: ""
   PROXY_PASSWORD: ""
 ---
-
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -67,6 +66,9 @@ spec:
           limits:
             cpu: "1"
             memory: "8Gi"
+          requests:
+            cpu: "1"
+            memory: "2Gi"
         readinessProbe:
           exec:
             command:
@@ -171,5 +173,21 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
+        - name: INIT_SCRIPT
+          value: 
+{% if AKAMAI_CREDENTIALS  %}
+            |-
+            echo install wget
+            apt-get install wget
+            echo wget installed
+            wget https://github.com/akamai/cli-purge/releases/download/1.0.1/akamai-purge-1.0.1-linux386        
+            chmod +x akamai-purge-1.0.1-linux386
+            mv akamai-purge-1.0.1-linux386 /usr/local/bin/akamai-purge
+            cat <<EOT >> /root/.edgerc
+{{ AKAMAI_CREDENTIALS | indent(12, true) }}
+            EOT
+{% else %}
+            ""
+{% endif %}
       restartPolicy: Always
 
